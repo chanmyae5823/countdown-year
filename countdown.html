@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Countdown</title>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #countdown {
+    font-size: 48px;
+    margin-top: 50px;
+  }
+
+  #label {
+    font-size: 24px;
+    margin-top: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+  }
+
+  #copyright {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Psycho style */
+  .psycho {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000, 0 0 30px #ff0000, 0 0 35px #ff0000;
+  }
+</style>
+</head>
+<body>
+<div id="countdown" class="psycho"></div>
+<div id="label" class="psycho">The Countdown</div>
+
+<div id="copyright" class="psycho">
+  &copy; Aiden Evander
+</div>
+
+<script>
+  // Get the countdown element
+  var countdownElement = document.getElementById('countdown');
+
+  // Function to update the countdown
+  function updateCountdown() {
+    // Set the date and time to count down to (change this to your desired date and time)
+    var countdownDate = new Date("2024-12-31T23:59:59").getTime();
+
+    // Get the current date and time
+    var now = new Date().getTime();
+
+    // Calculate the time difference between now and the countdown date
+    var distance = countdownDate - now;
+
+    // Calculate days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the countdown
+    countdownElement.innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+  }
+
+  // Update the countdown every second
+  setInterval(updateCountdown, 1000);
+
+  // Initial call to update the countdown
+  updateCountdown();
+</script>
+</body>
+</html>
